@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
+import Topbar from "@/components/topbar";
+import SideMenu from "@/components/sidemenu";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,8 +19,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.className} h-screen w-screen`}>
+        <ThemeProvider>
+            <div className="relative z-10">
+              <Topbar />
+              <SideMenu />
+              <div className="ml-[64px] h-full">
+                <main>{children}</main>
+              </div>
+            </div> 
+          
+        </ThemeProvider>
+      </body>
     </html>
   );
+
 }

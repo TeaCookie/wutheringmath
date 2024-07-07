@@ -2,32 +2,91 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background: 310 100% 98%;
+    --foreground: 310 5% 10%;
+    --card: 310 50% 98%;
+    --card-foreground: 310 5% 15%;
+    --popover: 310 100% 98%;
+    --popover-foreground: 310 100% 10%;
+    --primary: 310 28% 62.9%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 310 30% 90%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 272 30% 95%;
+    --muted-foreground: 310 5% 40%;
+    --accent: 272 30% 90%;
+    --accent-foreground: 310 5% 15%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 310 5% 98%;
+    --border: 310 30% 82%;
+    --input: 310 30% 50%;
+    --ring: 310 28% 62.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Name: custom color palette
+         Author: Ilias Ism
+         URL: https://gradient.page */
+
+    /* CSS: .bg-gradient { background: var(--gradient) } */
+    
+    --background: -50 22.75% 5.52%;
+    --foreground: -50 3.5% 98.45%;
+
+    --muted: -50 17.5% 20.7%;
+    --muted-foreground: -50 3.5% 56.9%;
+
+    --popover: -50 58% 8.969999999999999%;
+    --popover-foreground: -50 3.5% 98.45%;
+
+    --card: -50 58% 8.969999999999999%;
+    --card-foreground: -50 3.5% 98.45%;
+
+    --border: -50 17.5% 20.7%;
+    --input: -50 17.5% 20.7%;
+
+    --primary: -50 35% 69%;
+    --primary-foreground: -50 3.5% 6.8999999999999995%;
+
+    --secondary: -50 17.5% 20.7%;
+    --secondary-foreground: -50 3.5% 98.45%;
+
+    --accent: -50 17.5% 20.7%;
+    --accent-foreground: -50 3.5% 98.45%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: -50 3.5% 98.45%;
+
+    --ring: -50 35% 69%;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+@layer base {
+  * {
+    @apply border-border;
+  }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  body {
+    @apply bg-background text-foreground;
   }
 }
+
+.masked-gradient {
+  position: relative;
+  overflow: hidden;
+}
+
+.masked-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to left, #CC95C0, #DBD4B4, #7AA1D2);
+  z-index: -1;
+}
+
