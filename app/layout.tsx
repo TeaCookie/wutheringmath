@@ -20,16 +20,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} h-screen w-screen`}>
+      <body className={`${inter.className} h-screen w-screen flex flex-col`}>
         <ThemeProvider>
-            <div className="relative z-10">
-              <Topbar />
-              <SideMenu />
-              <div className="ml-[64px] h-full">
-                <main>{children}</main>
-              </div>
-            </div> 
-          
+          <Topbar />
+          <div className="flex flex-1">
+            <SideMenu />
+            <div className="flex-1 ml-[64px]">
+              <main className="h-full">{children}</main>
+            </div>
+          </div>
         </ThemeProvider>
       </body>
     </html>
